@@ -36,6 +36,10 @@ DebugComp, Internal and Utilities folder location of e² studio<br>
 https://en-support.renesas.com/knowledgeBase/19891761<br><br>
 
 ## Build steps
+### Note1:
+When Ninja is used, there may be several minutes without any messages during the process of linking executable due to the execution of Renesas CC-RX's \`library generator\` actually generating or regenerating libraries as part of the process. Please wait for a while.
+
+### Note2:
 Please extract the zip file in a short path folder such as:
 ```
 C:/Renesas/IoT_SDKs
