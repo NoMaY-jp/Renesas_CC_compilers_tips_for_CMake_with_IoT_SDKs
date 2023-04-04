@@ -1,6 +1,6 @@
 {
     "cmake.configureOnOpen": false,
-    "cmake.sourceDirectory": "${workspaceFolder}/Renesas/RSK_RX65N_2MB_CCRX",
+    "cmake.sourceDirectory": "${workspaceFolder}",
     "cmake.configureSettings": {
         // This is to tell `clangd` language server about the language standard.
         // (This is global at least as of today and is not a good workaround.)

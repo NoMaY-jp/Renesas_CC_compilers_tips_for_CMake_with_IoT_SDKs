@@ -3,16 +3,16 @@
 This repository is based on the following IoT SDKs and versions.
 
 * FreeRTOS AWS Reference Integrations - DEPRECATED<br>
-https://github.com/renesas/amazon-freertos<br>
+<https://github.com/renesas/amazon-freertos><br>
 afr-v202107.00-rx-1.0.1
 
 * Getting Started with Azure RTOS and Azure IoT<br>
-https://github.com/azure-rtos/getting-started<br>
+<https://github.com/azure-rtos/getting-started><br>
 azrtos_v6.2.0
 
 The zip file of this repository's source code can be downloaded here.
 
-* https://github.com/NoMaY-jp/Renesas_CC_compilers_tips_for_CMake_with_IoT_SDKs/archive/refs/heads/main.zip
+* <https://github.com/NoMaY-jp/Renesas_CC_compilers_tips_for_CMake_with_IoT_SDKs/archive/refs/heads/main.zip>
 
 The following source code folders are extracted from the zip file. (There are other folders just for confirming workaround tips easier.)
 
@@ -27,7 +27,7 @@ If the free edition of CC-RX is used (for example, the free edition of V3.05 lik
 
 * CMake 3.26.0 or later<br>
 CMake can be downloaded here.<br>
-https://cmake.org/download/
+<https://cmake.org/download/>
 
 * Ninja or Make<br>
 The repo version of ninja running on Windows is included here as a part of the SDK.<br>
@@ -35,14 +35,14 @@ aziot-azrtos-v6.2.0-ccrx/cmake/ninja.exe<br><br>
 Also  Make can be used instead of Ninja.<br>
 The Renesas version of MinGW make running on Windows can be found in the Renesas e2 studio's Utilities folder according to the following FAQ:<br>
 DebugComp, Internal and Utilities folder location of e² studio<br>
-https://en-support.renesas.com/knowledgeBase/19891761<br><br>
+<https://en-support.renesas.com/knowledgeBase/19891761><br><br>
 
-## Build steps
+## Build steps for Command Prompt
 
-### Note1:
+#### Note1:
 When Ninja is used, there may be several minutes without any messages during the process of linking executable due to the execution of Renesas CC-RX's \`library generator\` actually generating or regenerating libraries as part of the process. Please wait for a while.
 
-### Note2:
+#### Note2:
 Please extract the zip file in a short path folder such as:
 ```
 C:/Renesas/IoT_SDKs
@@ -53,16 +53,16 @@ C:/Renesas/IoT_SDKs
 ```
 cd /d C:/Renesas/IoT_SDKs/afr-v202107.00-rx-1.0.1-ccrx/projects/renesas/rx65n-rsk/cmake-build/aws_demos
 ```
-* Edit the following part of either or both batch files for your environment.<br>
+* Edit the following part of either or both batch files for your environment.
 ```
 rebuild.bat <-- This is for Ninja.
 rebuild_by_make.bat
 ```
 ```
-cmake -B../../../../../build -S../../../../.. -G%GENERATOR% -DVENDOR=renesas -DBOARD=rx65n-rsk -DCOMPILER=cc-rx -DAFR_TOOLCHAIN_PATH=C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin -DAFR_EXTERNAL_TOOLCHAIN_PATH=C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx
-cmake --build ../../../../../build
+set AFR_TOOLCHAIN_PATH=C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin
+set AFR_EXTERNAL_TOOLCHAIN_PATH=C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx
 ```
-* Run the batch file. (The following case is that the build folder already exists.)<br>
+* Run the batch file. (The following case is that the build folder already exists.)
 ```
 >rebuild.bat
 
@@ -171,16 +171,16 @@ FreeRTOS modules:
 ```
 cd /d C:/Renesas/IoT_SDKs/aziot-azrtos-v6.2.0-ccrx/Renesas/RSK_RX65N_2MB_CCRX/tools
 ```
-* Edit the following part of either or both batch files for your environment.<br>
+* Edit the following part of either or both batch files for your environment.
 ```
 rebuild.bat <-- This is for Ninja.
 rebuild_by_make.bat
 ```
 ```
-cmake -B../../../build -S.. -G%GENERATOR% -DCMAKE_TOOLCHAIN_FILE="../../cmake/renesas-rx-ccrx-rx65n.cmake" -DCMAKE_BUILD_TYPE="Release"
-cmake --build ../../../build
+set RX_CCRX_PATH=C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin
+set RX_XCONV_PATH=C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx
 ```
-* Run the batch file. (The following case is that the build folder already exists.)<br>
+* Run the batch file. (The following case is that the build folder already exists.)
 ```
 >rebuild.bat
 
@@ -230,6 +230,76 @@ Merging platform asc_config.h.in
 ```
 <br>
 
+## Build steps for VSCode
+
+#### Note1:
+When Ninja is used, there may be several minutes without any messages during the process of linking executable due to the execution of Renesas CC-RX's \`library generator\` actually generating or regenerating libraries as part of the process. Please wait for a while.
+
+#### Note2:
+Please extract the zip file in a short path folder such as:
+```
+C:/Renesas/IoT_SDKs
+```
+## FreeRTOS AWS Reference Integrations - DEPRECATED
+
+* Open the following folder in the VSCode.
+```
+C:\Renesas\IoT_SDKs\afr-v202107.00-rx-1.0.1-ccrx
+```
+* Edit the following part of the cmake-kits.json for your environment.
+```
+C:\Renesas\IoT_SDKs\afr-v202107.00-rx-1.0.1-ccrx\.vscode\cmake-kits.json
+```
+```
+        "preferredGenerator": {
+            "name": "Ninja"
+        },
+        "cmakeSettings": {
+            "AFR_TOOLCHAIN_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
+            "AFR_EXTERNAL_TOOLCHAIN_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx",
+            "VENDOR": "renesas",
+            "BOARD": "rx65n-rsk"
+        }
+```
+* Select the following kit for the active kit in the VSCode.
+```
+Renesas RX65N CC-RX Kit
+```
+* Select RelWithDebInfo for the current build variant in the VSCode.
+```
+RelWithDebInfo
+```
+* Press F7 key to start build along with preceding configure step.<br><br>
+
+## Getting Started with Azure RTOS and Azure IoT
+
+* Open the following folder in the VSCode.
+```
+C:\Renesas\IoT_SDKs\aziot-azrtos-v6.2.0-ccrx
+```
+* Edit the following part of cmake-kits.json for your environment.
+```
+C:\Renesas\IoT_SDKs\aziot-azrtos-v6.2.0-ccrx\.vscode\cmake-kits.json
+```
+```
+        "preferredGenerator": {
+            "name": "Ninja"
+        },
+        "environmentVariables": {
+            "RX_CCRX_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
+            "RX_XCONV_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx"
+        }
+```
+* Select the following kit for the active kit in the VSCode.
+```
+Renesas RX65N CC-RX Kit
+```
+* Select RelWithDebInfo for the current build variant in the VSCode.
+```
+RelWithDebInfo
+```
+* Press F7 key to start build along with preceding configure step.<br><br>
+
 ## Which cmake files are modified and which cmake files are added
 
 Just for confirming workaround tips easier, the following folders are included in the zip file.
@@ -244,55 +314,55 @@ Just for confirming workaround tips easier, the following folders are included i
 Modified cmake files:
 ```
 CMakeLists.txt
-tools\cmake\toolchains\cc-rx.cmake
-tools\cmake\toolchains\find_compiler.cmake
-vendors\renesas\boards\rx65n-rsk\CMakeLists.txt
+tools/cmake/toolchains/cc-rx.cmake
+tools/cmake/toolchains/find_compiler.cmake
+vendors/renesas/boards/rx65n-rsk/CMakeLists.txt
 ```
 Modified C source files (due to a \`header file\` name conflict):
 ```
-vendors\renesas\amazon_freertos_common\entropy_hardware_poll.c
-vendors\renesas\boards\rx65n-rsk\ports\pkcs11\core_pkcs11_pal.c
+vendors/renesas/amazon_freertos_common/entropy_hardware_poll.c
+vendors/renesas/boards/rx65n-rsk/ports/pkcs11/core_pkcs11_pal.c
 ```
 Added cmake files:
 ```
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-ASM.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-AssemblerWrapper.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-C.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-CompilerWrapper.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-CXX.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-DetermineCompiler.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-FindBinUtils.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-LibGeneratorWrapper.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-LinkerWrapper.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-XConverterWrapper.cmake
-tools\cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-ASM.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-AssemblerWrapper.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-C.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CompilerWrapper.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CXX.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-DetermineCompiler.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-FindBinUtils.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LibGeneratorWrapper.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LinkerWrapper.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-XConverterWrapper.cmake
+tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS.cmake
 ```
 ## Getting Started with Azure RTOS and Azure IoT
 
 Modified cmake file:
 ```
-cmake\utilities.cmake
+cmake/utilities.cmake
 ```
 Added cmake files:
 ```
-shared\lib\netxduo\ports\rxv2\ccrx\CMakeLists.txt
-shared\lib\threadx\ports\rxv2\ccrx\CMakeLists.txt
-Renesas\RSK_RX65N_2MB_CCRX\CMakeLists.txt
-Renesas\RSK_RX65N_2MB_CCRX\app\CMakeLists.txt
-Renesas\RSK_RX65N_2MB_CCRX\lib\CMakeLists.txt
-Renesas\RSK_RX65N_2MB_CCRX\lib\netx_driver\CMakeLists.txt
-Renesas\RSK_RX65N_2MB_CCRX\lib\rx_driver_package\CMakeLists.txt
-cmake\renesas-rx-ccrx-rx65n.cmake
-cmake\renesas-rx-ccrx-toolchain.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-ASM.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-AssemblerWrapper.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-C.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-CompilerWrapper.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-CXX.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-DetermineCompiler.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-FindBinUtils.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-LibGeneratorWrapper.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-LinkerWrapper.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS-XConverterWrapper.cmake
-cmake\CMake-Compiler-RENESAS\Modules\Compiler\RENESAS.cmake
+shared/lib/netxduo/ports/rxv2/ccrx/CMakeLists.txt
+shared/lib/threadx/ports/rxv2/ccrx/CMakeLists.txt
+Renesas/RSK_RX65N_2MB_CCRX/CMakeLists.txt
+Renesas/RSK_RX65N_2MB_CCRX/app/CMakeLists.txt
+Renesas/RSK_RX65N_2MB_CCRX/lib/CMakeLists.txt
+Renesas/RSK_RX65N_2MB_CCRX/lib/netx_driver/CMakeLists.txt
+Renesas/RSK_RX65N_2MB_CCRX/lib/rx_driver_package/CMakeLists.txt
+cmake/renesas-rx-ccrx-rx65n.cmake
+cmake/renesas-rx-ccrx-toolchain.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-ASM.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-AssemblerWrapper.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-C.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CompilerWrapper.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CXX.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-DetermineCompiler.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-FindBinUtils.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LibGeneratorWrapper.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LinkerWrapper.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-XConverterWrapper.cmake
+cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS.cmake
 ```

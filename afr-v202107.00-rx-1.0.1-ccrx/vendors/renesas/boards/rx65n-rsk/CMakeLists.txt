@@ -43,11 +43,21 @@ afr_set_board_metadata(AWS_DEMOS_CONFIG_FILES_LOCATION "${CMAKE_CURRENT_LIST_DIR
 # -------------------------------------------------------------------------------------------------
 afr_mcu_port(compiler)
 
+set(c_standard
+    99
+)
+
+# Compiler language standard.
+target_compile_features(
+    AFR::compiler::mcu_port
+    INTERFACE
+        c_std_${c_standard}
+)
+
 set(compiler_flags
     -isa=rxv2
     -branch=32
     -preinclude=${renesas_amazon_freertos_compiler_support_dir}/implicitlyinclude.h
-    -lang=c99
     -nomessage=21644,20010,23034,23035,20177,23033
     -debug -g_line
     #-type_size_access_to_volatile
@@ -347,5 +357,12 @@ if(AFR_ENABLE_DEMOS OR AFR_ENABLE_TESTS)
         PRIVATE
             AFR::freertos_plus_tcp
             AFR::utils
+    )
+
+    # Compiler language standard is also necessary for Library Generator in exe link process.
+    target_compile_features(
+        ${exe_target}
+        PRIVATE
+            c_std_${c_standard}
     )
 endif()

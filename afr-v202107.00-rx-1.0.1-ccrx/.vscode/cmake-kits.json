@@ -1,0 +1,15 @@
+[
+    {
+        "name": "Renesas RX65N CC-RX",
+        "toolchainFile": "${workspaceFolder}/tools/cmake/toolchains/cc-rx.cmake",
+        "preferredGenerator": {
+            "name": "Ninja"
+        },
+        "cmakeSettings": {
+            "AFR_TOOLCHAIN_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
+            "AFR_EXTERNAL_TOOLCHAIN_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx",
+            "VENDOR": "renesas",
+            "BOARD": "rx65n-rsk"
+        }
+    }
+]

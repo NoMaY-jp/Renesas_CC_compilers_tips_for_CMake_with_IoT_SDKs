@@ -1,0 +1,76 @@
+# https://clangd.llvm.org/config
+
+CompileFlags:
+  Add:
+    - -U__llvm__
+    - -D_CLANGD=1
+    - --include=../.vscode/c_cpp_intellisense_helper.h
+    - -m32
+  Remove:
+    - -a*
+    - -b*
+    - -c*
+    - -d*
+    - -e*
+    - -f*
+    - -g*
+    - -h*
+    # - -i* # -isystem<directory> is used.
+    - -include=*
+    - -ignore_files_misra=*
+    - -instalign*
+    - -insert_nop_with_label=*
+    - -inline*
+    - -ip_optimize
+    - -isa=*
+    - -int_to_short
+    - -j*
+    - -k*
+    - -l*
+    - -m*
+    - -n*
+    - -o*
+    - -p*
+    - -q*
+    - -r*
+    # - -s* # -std==<arg> is used.
+    - -section=*
+    - -stuff
+    - -stack_protector*
+    - -show=*
+    - -speed
+    - -size
+    - -scope
+    - -schedule
+    - -smap
+    - -simple_float_conv
+    - -signed_char
+    - -signed_bitfield
+    - -save_acc
+    - -sjis
+    - -subcommand=*
+    - -t*
+    - -u*
+    - -v*
+    - -w*
+    - -x*
+    - -y*
+    - -z*
+    - --
+  Compiler:
+    clang
+Diagnostics:
+  Suppress:
+    - drv_unknown_argument
+    - builtin_redeclare # __built_in_va_start
+    - main_returns_nonint # main # When -std=XXX is specified.
+    - -Wmain-return-type # main # When -std=XXX isn't specified.
+
+# Cannot suppress driver diagnostics #1142
+# https://github.com/clangd/clangd/issues/1142
+
+# Clang command line argument reference
+# https://clang.llvm.org/docs/ClangCommandLineReference.html
+
+# Clang Compiler User's Manual
+# https://clang.llvm.org/docs/UsersManual.html
