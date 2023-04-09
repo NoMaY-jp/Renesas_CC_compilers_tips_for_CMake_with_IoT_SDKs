@@ -246,11 +246,11 @@ The following files other than cmake files are necessary for VSCode and LLVM \`c
 afr-v202107.00-rx-1.0.1-ccrx/.vscode/settings.json
 afr-v202107.00-rx-1.0.1-ccrx/.vscode/cmake-kits.json
 afr-v202107.00-rx-1.0.1-ccrx/.vscode/c_cpp_intellisense_helper.h
-afr-v202107.00-rx-1.0.1-ccrx/.vscode/.clangd
+afr-v202107.00-rx-1.0.1-ccrx/.clangd
 aziot-azrtos-v6.2.0-ccrx/.vscode/settings.json
 aziot-azrtos-v6.2.0-ccrx/.vscode/cmake-kits.json
 aziot-azrtos-v6.2.0-ccrx/.vscode/c_cpp_intellisense_helper.h
-aziot-azrtos-v6.2.0-ccrx/.vscode/.clangd
+aziot-azrtos-v6.2.0-ccrx/.clangd
 ```
 ## FreeRTOS AWS Reference Integrations - DEPRECATED
 
