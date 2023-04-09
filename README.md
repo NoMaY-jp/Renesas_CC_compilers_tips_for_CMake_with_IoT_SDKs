@@ -33,8 +33,8 @@ CMake can be downloaded here.<br>
 The repo version of ninja running on Windows is included here as a part of the SDK.<br>
 aziot-azrtos-v6.2.0-ccrx/cmake/ninja.exe<br><br>
 Also  Make can be used instead of Ninja.<br>
-The Renesas version of MinGW make running on Windows can be found in the Renesas e2 studio's Utilities folder according to the following FAQ:<br>
-DebugComp, Internal and Utilities folder location of e² studio<br>
+The Renesas version of GNU Make 4.0 running on Windows can be found in the Renesas e2 studio's Utilities folder according to the following FAQ:<br>
+DebugComp, Internal and Utilities folder location of e2 studio<br>
 <https://en-support.renesas.com/knowledgeBase/19891761><br><br>
 
 ## Build steps for Command Prompt
@@ -189,7 +189,7 @@ https://github.com/azure-rtos/getting-started
 
 The executable and intermediate files will be built in the following folder.
 
-C:\Renesas\IoT_SDKs\aziot-azrtos-v6.2.0-ccrx\Renesas\RSK_RX65N_2MB_CCRX\tools\..\..\build
+C:\Renesas\IoT_SDKs\aziot-azrtos-v6.2.0-ccrx\Renesas\RSK_RX65N_2MB_CCRX\tools\..\..\..\build
 
 The folder already exists. Is it OK to delete it? (Y/N) Y
 
@@ -240,6 +240,18 @@ Please extract the zip file in a short path folder such as:
 ```
 C:/Renesas/IoT_SDKs
 ```
+#### Note3:
+The following files other than cmake files are necessary for VSCode and LLVM \`clangd\` language server:
+```
+afr-v202107.00-rx-1.0.1-ccrx/.vscode/settings.json
+afr-v202107.00-rx-1.0.1-ccrx/.vscode/cmake-kits.json
+afr-v202107.00-rx-1.0.1-ccrx/.vscode/c_cpp_intellisense_helper.h
+afr-v202107.00-rx-1.0.1-ccrx/.vscode/.clangd
+aziot-azrtos-v6.2.0-ccrx/.vscode/settings.json
+aziot-azrtos-v6.2.0-ccrx/.vscode/cmake-kits.json
+aziot-azrtos-v6.2.0-ccrx/.vscode/c_cpp_intellisense_helper.h
+aziot-azrtos-v6.2.0-ccrx/.vscode/.clangd
+```
 ## FreeRTOS AWS Reference Integrations - DEPRECATED
 
 * Open the following folder in the VSCode.
@@ -254,12 +266,10 @@ C:\Renesas\IoT_SDKs\afr-v202107.00-rx-1.0.1-ccrx\.vscode\cmake-kits.json
         "preferredGenerator": {
             "name": "Ninja"
         },
-        "cmakeSettings": {
+         "environmentVariables": {
             "AFR_TOOLCHAIN_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
             "AFR_EXTERNAL_TOOLCHAIN_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx",
-            "VENDOR": "renesas",
-            "BOARD": "rx65n-rsk"
-        }
+        },
 ```
 * Select the following kit for the active kit in the VSCode.
 ```
@@ -299,6 +309,70 @@ Renesas RX65N CC-RX Kit
 RelWithDebInfo
 ```
 * Press F7 key to start build along with preceding configure step.<br><br>
+
+## Build steps for Visual Studio (Visual Studio Community 2022 17.5.3)
+
+#### Note1:
+When Ninja is used, there may be several minutes without any messages during the process of linking executable due to the execution of Renesas CC-RX's \`library generator\` actually generating or regenerating libraries as part of the process. Please wait for a while.
+
+#### Note2:
+Please extract the zip file in a short path folder such as:
+```
+C:/Renesas/IoT_SDKs
+```
+#### Note3:
+The following files other than cmake files are necessary for Visual Studio and its \`IntelliSence\` engine:
+```
+afr-v202107.00-rx-1.0.1-ccrx/CMakeSettings.json
+afr-v202107.00-rx-1.0.1-ccrx/.vs/CMakeWorkspaceSettings.json
+afr-v202107.00-rx-1.0.1-ccrx/.vs/ProjectSettings.json
+afr-v202107.00-rx-1.0.1-ccrx/.vs/c_cpp_intellisense_helper.h
+aziot-azrtos-v6.2.0-ccrx/Renesas/RSK_RX65N_2MB_CCRX/CMakeSettings.json
+aziot-azrtos-v6.2.0-ccrx/.vs/CMakeWorkspaceSettings.json
+aziot-azrtos-v6.2.0-ccrx/.vs/ProjectSettings.json
+aziot-azrtos-v6.2.0-ccrx/.vs/c_cpp_intellisense_helper.h
+```
+## FreeRTOS AWS Reference Integrations - DEPRECATED
+
+* Open the following folder in the Visual Studio.
+```
+C:\Renesas\IoT_SDKs\afr-v202107.00-rx-1.0.1-ccrx
+```
+* Edit the following part of the CMakeSettings.json for your environment.
+```
+C:\Renesas\IoT_SDKs\afr-v202107.00-rx-1.0.1-ccrx\CMakeSettings.json
+```
+```
+      "generator": "Ninja",
+      "environments": [
+        {
+          "AFR_TOOLCHAIN_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
+          "AFR_EXTERNAL_TOOLCHAIN_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx"
+        }
+      ],
+```
+* Press F6 key to start build along with preceding configure step.<br><br>
+
+## Getting Started with Azure RTOS and Azure IoT
+
+* Open the following folder in the Visual Studio.
+```
+C:\Renesas\IoT_SDKs\aziot-azrtos-v6.2.0-ccrx
+```
+* Edit the following part of the CMakeSettings.json for your environment.
+```
+C:\Renesas\IoT_SDKs\aziot-azrtos-v6.2.0-ccrx\Renesas\RSK_RX65N_2MB_CCRX\CMakeSettings.json
+```
+```
+      "generator": "Ninja",
+      "environments": [
+        {
+          "RX_CCRX_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
+          "RX_XCONV_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx"
+        }
+      ],
+```
+* Press F6 key to start build along with preceding configure step.<br><br>
 
 ## Which cmake files are modified and which cmake files are added
 

@@ -1,0 +1,49 @@
+{
+  // https://learn.microsoft.com/cpp/build/cmake-projects-in-visual-studio
+  // https://learn.microsoft.com/cpp/build/cmake-presets-json-reference
+  // https://learn.microsoft.com/cpp/build/cmakesettings-reference
+  "configurations": [
+    {
+      "name": "Renesas RX65N CC-RX",
+      "configurationType": "RelWithDebInfo",
+      "buildRoot": "${workspaceRoot}/build",
+      "cmakeExecutable": "C:/Program Files/CMake/bin/cmake.exe",
+      "cmakeToolchain": "${projectDir}/tools/cmake/toolchains/cc-rx.cmake",
+      "generator": "Ninja",
+      "environments": [
+        {
+          "AFR_TOOLCHAIN_PATH": "C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin",
+          "AFR_EXTERNAL_TOOLCHAIN_PATH": "C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx"
+        }
+      ],
+      "variables": [
+        {
+          "name": "VENDOR",
+          "value": "renesas"
+        },
+        {
+          "name": "BOARD",
+          "value": "rx65n-rsk"
+        },
+        {
+          "name": "INTELLISENSE_HELPER_C_FLAGS",
+          "value": "-std=c99 -I\"${env.AFR_TOOLCHAIN_PATH}/../include\" -include\"${workspaceRoot}/.vs/c_cpp_intellisense_helper.h\""
+        },
+        {
+          "name": "INTELLISENSE_HELPER_CXX_FLAGS",
+          "value": "-std=c++98 -I\"${env.AFR_TOOLCHAIN_PATH}/../include\" -include\"${workspaceRoot}/.vs/c_cpp_intellisense_helper.h\""
+        }
+      ],
+      "intelliSenseMode": "windows-clang-x86",
+      "intellisenseOptions": { "useCompilerDefaults": false }
+    }
+  ]
+}
+//---------------------------------------------------------------------
+// Note: DebugComp, Internal and Utilities folder location of e2 studio
+//---------------------------------------------------------------------
+//
+// Renesas' FAQ
+//
+// https://en-support.renesas.com/knowledgeBase/19891761
+// https://ja-support.renesas.com/knowledgeBase/19851044

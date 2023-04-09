@@ -19,7 +19,7 @@ set GENERATOR=Ninja
 set AFR_TOOLCHAIN_PATH=C:/Renesas/CS+/CC/CC-RX/V3.05.00/bin
 set AFR_EXTERNAL_TOOLCHAIN_PATH=C:/Renesas/e2studio64/SupportFiles/.eclipse/com.renesas.platform_733684649/Utilities/ccrx
 
-cmake -B../../../../../build -S../../../../.. -G"%GENERATOR%" -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DVENDOR=renesas -DBOARD=rx65n-rsk -DCOMPILER=cc-rx -DAFR_TOOLCHAIN_PATH="%AFR_TOOLCHAIN_PATH%" -DAFR_EXTERNAL_TOOLCHAIN_PATH="%AFR_EXTERNAL_TOOLCHAIN_PATH%"
+cmake -B../../../../../build -S../../../../.. -G"%GENERATOR%" -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DVENDOR=renesas -DBOARD=rx65n-rsk -DCOMPILER=cc-rx
 cmake --build ../../../../../build
 
 rem ---------------------------------------------------------------------

@@ -127,9 +127,10 @@ elseif("x${CMAKE_${_CMAKE_PROCESSING_LANGUAGE}_COMPILER_ID}" MATCHES "^xRENESAS$
     get_filename_component(_CMAKE_RENESAS_HINT "${COMPILER}" DIRECTORY)
     list(APPEND _RENESAS_HINTS "${_CMAKE_RENESAS_HINT}")
 
-    find_program(_CMAKE_RENESAS_XCONVERTER NAMES "renesas_cc_converter" "renesas_cc_converter.exe")
-    get_filename_component(_CMAKE_RENESAS_XCONVERTER_HINT "${_CMAKE_RENESAS_XCONVERTER}" DIRECTORY)
-    list(APPEND _RENESAS_HINTS "${_CMAKE_RENESAS_XCONVERTER_HINT}")
+#### FIXME: I forget what is this.
+####    find_program(_CMAKE_RENESAS_XCONVERTER NAMES "renesas_cc_converter" "renesas_cc_converter.exe")
+####    get_filename_component(_CMAKE_RENESAS_XCONVERTER_HINT "${_CMAKE_RENESAS_XCONVERTER}" DIRECTORY)
+####    list(APPEND _RENESAS_HINTS "${_CMAKE_RENESAS_XCONVERTER_HINT}")
 
     set(${RESULT} "${_RENESAS_HINTS}" PARENT_SCOPE)
   endfunction()

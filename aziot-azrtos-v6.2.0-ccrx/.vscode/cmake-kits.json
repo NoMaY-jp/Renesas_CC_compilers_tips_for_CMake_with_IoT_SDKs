@@ -1,4 +1,6 @@
 [
+    // https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/README.md#cmake-tools-for-visual-studio-code-documentation
+    // https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/kits.md#kit-options
     {
         "name": "Renesas RX65N CC-RX",
         "toolchainFile": "${workspaceFolder}/cmake/renesas-rx-ccrx-rx65n.cmake",
@@ -11,3 +13,11 @@
         }
     }
 ]
+//---------------------------------------------------------------------
+// Note: DebugComp, Internal and Utilities folder location of e2 studio
+//---------------------------------------------------------------------
+//
+// Renesas' FAQ
+//
+// https://en-support.renesas.com/knowledgeBase/19891761
+// https://ja-support.renesas.com/knowledgeBase/19851044

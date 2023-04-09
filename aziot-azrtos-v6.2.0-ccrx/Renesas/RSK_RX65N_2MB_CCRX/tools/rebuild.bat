@@ -5,7 +5,7 @@ echo https://github.com/azure-rtos/getting-started
 echo\
 echo The executable and intermediate files will be built in the following folder.
 echo\
-echo %~dp0..\..\build
+echo %~dp0..\..\..\build
 echo\
 if exist "%~dp0..\..\..\build\" (
   choice /N /M "The folder already exists. Is it OK to delete it? (Y/N)"

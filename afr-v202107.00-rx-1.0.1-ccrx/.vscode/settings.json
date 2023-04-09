@@ -1,10 +1,5 @@
 {
     "cmake.configureOnOpen": false,
     "cmake.sourceDirectory": "${workspaceFolder}",
-    "cmake.configureSettings": {
-        // This is to tell `clangd` language server about the language standard.
-        // (This is global at least as of today and is not a good workaround.)
-        "CMAKE_C_STANDARD": "99"
-    },
     "git.ignoreLimitWarning": true
 }

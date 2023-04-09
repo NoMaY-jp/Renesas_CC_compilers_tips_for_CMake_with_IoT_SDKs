@@ -1,0 +1,4 @@
+{
+  "enableCMake": true,
+  "sourceDirectory": "renesas\\rsk_rx65n_2mb_ccrx"
+}

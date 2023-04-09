@@ -30,6 +30,10 @@ foreach(arg_n RANGE ${cmd_args_first} ${cmd_args_last})
     # When clangd is used along with CMake, it is useful to tell clangd about `-isystem${_RENESAS_${lang}_COMPILER_PATH}/include or inc`.
     # But it is not a compilers' native flag. Therefore it is removed here.
     set(CMAKE_ARGV${arg_n} " ")
+  elseif(CMAKE_ARGV${arg_n} MATCHES "^-include[^=](.*)")
+    # When clangd is used along with CMake, it is useful to tell clangd about `-include<c_cpp_intellisense_helper.h>`.
+    # But it is not a compilers' native flag. Therefore it is removed here.
+    set(CMAKE_ARGV${arg_n} " ")
   elseif(CMAKE_ARGV${arg_n} MATCHES "^(-MF=)(.+)")
     set(dep_name ${CMAKE_MATCH_2})
     if(arc STREQUAL RX)
@@ -72,6 +76,18 @@ foreach(arg_n RANGE ${cmd_args_first} ${cmd_args_last})
           elseif(opt MATCHES "^-D(.+)")
             #message("DEBUG: ${opt}")
             string(JOIN " " sub_content_string ${sub_content_string} -define=${CMAKE_MATCH_1})
+          elseif(opt MATCHES "^-std=(.+)")
+            # When clangd is used along with CMake, it is useful to tell clangd about `-std=`.
+            # But it is not a compilers' native flag. Therefore it is removed here.
+            # I.e. nothing to do here.
+          elseif(opt MATCHES "^-isystem(.+)")
+            # When clangd is used along with CMake, it is useful to tell clangd about `-isystem${_RENESAS_${lang}_COMPILER_PATH}/include or inc`.
+            # But it is not a compilers' native flag. Therefore it is removed here.
+            # I.e. nothing to do.
+          elseif(opt MATCHES "^-include[^=](.+)")
+            # When clangd is used along with CMake, it is useful to tell clangd about `-include<c_cpp_intellisense_helper.h>`.
+            # But it is not a compilers' native flag. Therefore it is removed here.
+            # I.e. nothing to do.
           else()
             string(JOIN " " sub_content_string ${sub_content_string} ${opt})
           endif()
