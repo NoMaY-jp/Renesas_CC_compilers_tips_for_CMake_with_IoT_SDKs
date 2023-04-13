@@ -182,7 +182,6 @@ elseif("x${CMAKE_${_CMAKE_PROCESSING_LANGUAGE}_COMPILER_ID}" MATCHES "^xRENESAS$
         -V
         OUTPUT_VARIABLE output ERROR_VARIABLE output
         RESULT_VARIABLE result
-        TIMEOUT 30
       )
       message(CONFIGURE_LOG
         "Running the ${_CMAKE_PROCESSING_LANGUAGE} compiler: \"${CMAKE_${_CMAKE_PROCESSING_LANGUAGE}_COMPILER}\" -V\n"

@@ -37,6 +37,5 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_C_STANDARD 99)
 
 # Tell the Microsoft IntelliSence engine about workaround flags for Renesas CC compilers.
-# tell the Microsoft IntelliSence engine about workaround flags for Renesas CC compilers
 set(CMAKE_C_FLAGS   ${INTELLISENSE_HELPER_C_FLAGS})
 set(CMAKE_CXX_FLAGS ${INTELLISENSE_HELPER_CXX_FLAGS})
