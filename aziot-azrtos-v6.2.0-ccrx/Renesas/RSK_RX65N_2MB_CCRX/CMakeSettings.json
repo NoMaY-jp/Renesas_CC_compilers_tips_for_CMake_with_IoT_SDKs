@@ -18,12 +18,8 @@
       ],
       "variables": [
         {
-          "name": "INTELLISENSE_HELPER_C_FLAGS",
-          "value": "-std=c99 -I\"${env.RX_CCRX_PATH}/../include\" -include\"${workspaceRoot}/.vs/c_cpp_intellisense_helper.h\""
-        },
-        {
-          "name": "INTELLISENSE_HELPER_CXX_FLAGS",
-          "value": "-std=c++98 -I\"${env.RX_CCRX_PATH}/../include\" -include\"${workspaceRoot}/.vs/c_cpp_intellisense_helper.h\""
+          "name": "RENESAS_INTELLISENSE_HELPER_EXTRA_FLAGS",
+          "value": "-include\"${workspaceRoot}/.vs/c_cpp_intellisense_helper.h\""
         }
       ],
       "intelliSenseMode": "windows-clang-x86",
