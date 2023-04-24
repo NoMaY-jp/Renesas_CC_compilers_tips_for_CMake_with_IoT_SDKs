@@ -1,4 +1,4 @@
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../CMake-Compiler-RENESAS/Modules") # Tell CMake the path of support module for Renesas CC compilers.
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMake-Compiler-RENESAS/Modules") # Tell CMake the path of support module for Renesas CC compilers.
 set(CMAKE_C_COMPILER_ID RENESAS) # Tell CMake that the target compiler is one of Renesas CC compilers.
 set(CMAKE_C_COMPILER_ID_RUN TRUE) # Tell CMake that the compiler detection process must be eliminated.
 

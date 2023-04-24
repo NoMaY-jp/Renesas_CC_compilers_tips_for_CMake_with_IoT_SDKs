@@ -41,7 +41,7 @@ if(DEFINED ENV{RX_XCONV_PATH})
     # use the environment variable first    
     file(TO_CMAKE_PATH $ENV{RX_XCONV_PATH} RX_EXTERNAL_TOOLCHAIN_PATH)
     message(STATUS "Using ENV variable RX_XCONV_PATH = ${RX_EXTERNAL_TOOLCHAIN_PATH}")
-elseif(COMPILER_ON_PATH) 
+elseif(XCONV_ON_PATH) 
     # then check on the current path
     get_filename_component(RX_EXTERNAL_TOOLCHAIN_PATH ${XCONV_ON_PATH} DIRECTORY)
     message(STATUS "Using e2 studio's X Converter from path = ${RX_TOOLCHAIN_PATH}")

@@ -399,17 +399,17 @@ vendors/renesas/boards/rx65n-rsk/ports/pkcs11/core_pkcs11_pal.c
 ```
 Added cmake files:
 ```
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-ASM.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-AssemblerWrapper.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-C.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CompilerWrapper.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CXX.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-DetermineCompiler.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-FindBinUtils.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LibGeneratorWrapper.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LinkerWrapper.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-XConverterWrapper.cmake
-tools/cmake/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-ASM.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-AssemblerWrapper.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-C.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CompilerWrapper.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-CXX.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-DetermineCompiler.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-FindBinUtils.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LibGeneratorWrapper.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-LinkerWrapper.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS-XConverterWrapper.cmake
+tools/cmake/toolchains/CMake-Compiler-RENESAS/Modules/Compiler/RENESAS.cmake
 ```
 ## Getting Started with Azure RTOS and Azure IoT
 
