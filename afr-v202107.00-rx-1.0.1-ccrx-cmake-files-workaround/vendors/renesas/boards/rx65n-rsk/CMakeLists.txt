@@ -286,6 +286,12 @@ set(rbsp_link_first_src
     "${rx_driver_package_dir}/r_bsp/mcu/all/resetprg.c"
 )
 
+# reset_program.S has to be excluded because it is not for CC-RX but for GNURX. Moreover, due to the following assemble error:
+# F0553101:Invalid option '-define=MBEDTLS_CONFIG_FILE=<aws_mbedtls_config.h>' is used
+list(REMOVE_ITEM rbsp_mcu_all_src
+    "${rx_driver_package_dir}/r_bsp/mcu/all/reset_program.S"
+)
+
 set(rx_driver_package_src
     ${rbsp_board_genericrx65n_src}
     ${rbsp_mcu_all_src}
